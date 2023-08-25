@@ -71,12 +71,4 @@ public class ParkingFee {
         return a.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    private static int getMin(String outTime, String inTime) {
-        StringTokenizer st = new StringTokenizer(outTime, ":");
-        int o1 = Integer.parseInt(st.nextToken()) * 60 + Integer.parseInt(st.nextToken());
-        st = new StringTokenizer(inTime, ":");
-        int o2 = Integer.parseInt(st.nextToken()) * 60 + Integer.parseInt(st.nextToken());
-
-        return o2 - o1;
-    }
 }

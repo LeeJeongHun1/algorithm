@@ -36,16 +36,16 @@ public class ParkingFee {
         for (String record : records) {
             String[] split = record.split(" ");
             String time = split[0];
-            int i = Integer.parseInt(time.split(":")[0]) * 60 + Integer.parseInt(time.split(":")[1]);
+            int min = Integer.parseInt(time.split(":")[0]) * 60 + Integer.parseInt(time.split(":")[1]);
             String carNumber = split[1];
             String state = split[2];
 
             if (state.equals("IN")) {
-                recordMap.put(carNumber, i);
+                recordMap.put(carNumber, min);
                 continue;
             }
-            int min = i - recordMap.get(carNumber);
-            ans.put(carNumber, min);
+            int sub = min - recordMap.get(carNumber);
+            ans.put(carNumber, ans.getOrDefault(carNumber, 0) + sub);
             recordMap.remove(carNumber);
         }
 
